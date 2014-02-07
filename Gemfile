@@ -13,6 +13,10 @@ group :doc do
   gem 'sdoc', require: false
 end
 
+group :production do
+  gem 'pg'
+end
+
 # development gems
 group :development, :test do
   gem 'sqlite3', '~> 1.3.8'    # dev & test database

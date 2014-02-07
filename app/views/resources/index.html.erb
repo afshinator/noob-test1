@@ -1,0 +1,55 @@
+<h1>Listing resources</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Url</th>
+      <th>Description</th>
+      <th>Subject</th>
+      <th>Category</th>
+      <th>Cost</th>
+      <th>Date</th>
+      <th>Prerequisites</th>
+      <th>Quality</th>
+      <th>Depth</th>
+      <th>Usability</th>
+      <th>Vote</th>
+      <th>Difficulty</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @resources.each do |resource| %>
+      <tr>
+        <td><%= resource.title %></td>
+        <td><%= resource.url %></td>
+        <td><%= resource.description %></td>
+        <td><%= resource.subject %></td>
+        <td><%= resource.category %></td>
+        <td><%= resource.cost %></td>
+        <td><%= resource.date %></td>
+        <td><%= resource.prerequisites %></td>
+        <td><%= resource.quality %></td>
+        <td><%= resource.depth %></td>
+        <td><%= resource.usability %></td>
+        <td><%= resource.vote %></td>
+        <td><%= resource.difficulty %></td>
+<% if current_user.try(:admin?) %>        
+        <td><%= link_to 'Show', resource %></td>
+        <td><%= link_to 'Edit', edit_resource_path(resource) %></td>
+        <td><%= link_to 'Destroy', resource, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+<% end %>        
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<% if current_user.try(:admin?) %>
+<%= link_to 'New Resource', new_resource_path %>
+<% end %>
+
